@@ -7,12 +7,11 @@ function TodoItem({ todo }) {
     const [todoMsg,setTodoMsg] = useState(todo.todo)
     const {updatedTodo,deleteTodo,toggleComplete} = useTodo()
 
-    
     const editTodo = () =>{
         console.log(todo)
         updatedTodo(todo.id,{...todo,todo:todoMsg})
         console.log(todo)
-        // setIsTodoEditable(false);
+        setIsTodoEditable(false);
     }
 
     const toggleCompleted = ()=>{
@@ -47,10 +46,11 @@ function TodoItem({ todo }) {
                 onClick={() => {
                     if (todo.completed) return;
 
-                    setIsTodoEditable((prev) => !prev);
+                    
+                    
                     if (isTodoEditable) {
                         editTodo();
-                    } 
+                    }else setIsTodoEditable((prev) => !prev); 
                 }}
                 disabled={todo.completed}
             >
